@@ -1,0 +1,8 @@
+<h2> Ask a question </h2>
+<%= form_for Question.new do |f| %>
+  <%= f.label :topic %><br><br>
+  <%= f.select :topic_id, Topic.all.pluck(:body, :id) %><br><br>
+  <%= f.label :body %><br><br>
+  <%= f.text_area :body %><br><br>
+  <%= f.submit "Create Question" %>
+<% end %>

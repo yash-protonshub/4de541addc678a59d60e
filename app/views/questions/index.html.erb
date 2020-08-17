@@ -1,0 +1,22 @@
+<%= link_to "Create new Topic", new_topic_path %>
+
+<h2>Question Listing</h2>
+  <table>
+    <th> S.No</th>
+    <th>Question</th>
+    <th>Topic</th>
+    <th>User</th>
+      <% @question.each_with_index do |question, index| %>
+        <tr>
+          <td>
+            <%= (index + 1) %>
+          </td>
+          <td>
+            <%= link_to "#{question.body}", question_path(question.id), class: "question" %>    
+          </td>
+          <td><%= link_to "Follow Topic -> #{question.topic&.body}", follow_topic_topic_path(question.topic&.id), class: "follow_topic" %></td>
+          <td><%= link_to "Follow User -> #{question.user.email}", follow_user_user_path(question.user.id), class: "follow_user" %></td>
+        </tr>
+      <% end %>
+  </table>
+<%= render 'form' %>

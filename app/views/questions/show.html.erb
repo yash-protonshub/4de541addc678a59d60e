@@ -1,0 +1,9 @@
+<h2> <%= @question.body %> </h2>
+
+<h2> Answers Listing </h2>
+<%= "<h2> There are no answers yet".html_safe if @question.answers.blank?  %>
+<% @question.answers.each_with_index do |answer, index|  %>
+  <div class="answer"> <%= (index + 1)   %>.  <%= answer.body %> </div>
+<% end if @question.answers.count > 0 %> 
+
+<%= render 'answers/form', question: @question  %>
